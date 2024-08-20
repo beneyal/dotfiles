@@ -19,10 +19,15 @@ require("lazy").setup({
       -- Automatically install LSPs to stdpath for neovim
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-
-      -- Useful status updates for LSP
-      -- "j-hui/fidget.nvim",
     },
+  },
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup({
+        PATH = "append"
+      })
+    end
   },
   {
     "folke/lazydev.nvim",
@@ -77,6 +82,25 @@ require("lazy").setup({
     config = function()
       require("gitsigns").setup()
     end,
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    }
   },
 
   -- Fuzzy Finder (files, lsp, etc)
