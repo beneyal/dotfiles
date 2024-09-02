@@ -5,7 +5,7 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",             -- latest stable release
     lazypath,
   })
 end
@@ -31,7 +31,7 @@ require("lazy").setup({
   },
   {
     "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
+    ft = "lua",             -- only load on lua files
     opts = {
       library = {
         -- See the configuration section for more details
@@ -49,7 +49,7 @@ require("lazy").setup({
       opts.sources = opts.sources or {}
       table.insert(opts.sources, {
         name = "lazydev",
-        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        group_index = 0,                         -- set group index to 0 to skip loading LuaLS completions
       })
     end,
     dependencies = {
@@ -114,10 +114,10 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",                              opts = {} }, -- Add indentation guides even on blank lines
-  "numToStr/Comment.nvim",                                                                         -- "gc" to comment visual regions/lines
-  "tpope/vim-sleuth",                                                                              -- Detect tabstop and shiftwidth automatically
-  "tpope/vim-surround",                                                                            -- Surround visual regions with brackets
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",                              opts = {} },       -- Add indentation guides even on blank lines
+  "numToStr/Comment.nvim",                                                                               -- "gc" to comment visual regions/lines
+  "tpope/vim-sleuth",                                                                                    -- Detect tabstop and shiftwidth automatically
+  "tpope/vim-surround",                                                                                  -- Surround visual regions with brackets
 
   -- Catppuccin Theme
   { "catppuccin/nvim",                     name = "catppuccin",                       priority = 1000 },
@@ -134,7 +134,7 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    version = "^2", -- Recommended
+    version = "^2",             -- Recommended
     ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
   },
   -- Auto-close parentheses
@@ -181,7 +181,7 @@ require("lazy").setup({
   { "RRethy/vim-illuminate" },
   {
     "mrcjkb/rustaceanvim",
-    version = "^4", -- Recommended
+    version = "^4",             -- Recommended
     ft = { "rust" },
   },
   {
@@ -193,7 +193,7 @@ require("lazy").setup({
 
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         callback = function()
-          require("lint").try_lint()
+          require("lint").try_lint(nil, { ignore_errors = true })
         end,
       })
     end,
