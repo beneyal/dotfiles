@@ -185,17 +185,9 @@ require("lazy").setup({
     ft = { "rust" },
   },
   {
-    "mfussenegger/nvim-lint",
+    "j-hui/fidget.nvim",
     config = function()
-      require("lint").linters_by_ft = {
-        python = { "mypy", "flake8" },
-      }
-
-      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-        callback = function()
-          require("lint").try_lint(nil, { ignore_errors = true })
-        end,
-      })
+      require("fidget").setup({})
     end,
   }
 })
